@@ -24,8 +24,9 @@ However, she has a clear vision on how the product should behave, so she provide
 
 ## What are we looking for?
 
-* **A well-designed solution and architecture.** Avoid duplication, extract re-usable code
+* **A well-designed solution and architecture** Avoid duplication, extract re-usable code
 where makes sense. We want to see that you can create an easy-to-maintain codebase.
+* **Storage** We do not need a full fledged database rollout, its ok to save your data on memory for now. _However_ we are looking for an architecture that allows us to add a database as easy as possible.
 * **Testing** Try to create tests covering the main functionalities of your code. Feel free to create both unit tests and functional tests.
-* **Documentation**. The CEO has a non-tech background so try to explain your decisions, 
+* **Documentation** The CEO has a non-tech background so try to explain your decisions, 
 as well as any other technical requirement (how to run the API, external dependencies, etc ...)
