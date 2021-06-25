@@ -1,7 +1,7 @@
 {
   "name": "nodejs-backend-challenge",
   "version": "1.0.0",
-  "description": "Rviewer nodejs challenge",
+  "description": "Nodejs challenge",
   "main": "index.js",
   "directories": {
     "doc": "doc"
