@@ -3,6 +3,7 @@ import "./helpers/env";
 import express from "express";
 import http from "http";
 import cors from "cors";
+import routes from './routes';
 
 const SERVER_PORT = process.env.SERVER_PORT;
 
@@ -31,7 +32,8 @@ app.get("/", async (req, res) => {
 
 // ------------------------------------------------------------------------------------------------------------
 
-//TODO: Add Routers
+// Routes
+app.use(routes);
 
 // ------------------------------------------------------------------------------------------------------------
 
