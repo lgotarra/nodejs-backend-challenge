@@ -16,7 +16,7 @@ export interface IList extends Document {
 }
 
 const ListSchema: Schema = new Schema({
-  _id: { type: Number, unique: true },
+  _id: { type: Number, index: { unique: true } },
   name: { type: String, required: true },
   user_id: { type: Number, required: true },
   movies: [
