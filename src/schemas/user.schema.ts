@@ -13,11 +13,11 @@ const UserSchema: Schema = new Schema ({
     password: {type: String, required: true, unique: true}
 });
 
-//Automatic increment of id
+// Automatic increment of id
 UserSchema.plugin(AutoIncrementID, {});
 
-//Export for a unique db connection
-//export default mongoose.model<IUser>("User", UserSchema);
+// Export for a unique db connection
+// export default mongoose.model<IUser>("User", UserSchema);
 
 // Export for multiple db connections. Need to add the model to desired db
 export default UserSchema;

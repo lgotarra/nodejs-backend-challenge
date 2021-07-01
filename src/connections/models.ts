@@ -1,11 +1,11 @@
 import mongoose, { Model, Schema } from "mongoose";
 import connect, { TInput } from "./connect";
-//Import Schemas for each db
+// Import Schemas for each db
 import ListSchema from "../schemas/list.schema";
 import UserSchema from "../schemas/user.schema";
 
 const dbDefault = process.env.DB_DEFAULT;
-//Other databases URLs. Add them to .env
+// Other databases URLs. Add them to .env
 
 /*
  *
@@ -13,14 +13,14 @@ const dbDefault = process.env.DB_DEFAULT;
  *
  */
 
-var dbDefaultConn = connect({ db: dbDefault! });
+const dbDefaultConn = connect({ db: dbDefault! });
 
 function connectToDbDefault() {
-  //dbDefault Connection. Contains Users and Lists
+  // dbDefault Connection. Contains Users and Lists
 
   dbDefaultConn.on("disconnected", () => {
     console.warn(`Database ${dbDefaultConn} disconnected. Trying to reconnect`);
-    connect;
+    connect({ db: dbDefault! });
   });
 
   dbDefaultConn.on("error", (error) => {
@@ -28,9 +28,11 @@ function connectToDbDefault() {
   });
 }
 
-//Export models from this db
-var UserModel = dbDefaultConn.model("User", UserSchema);
-var ListModel = dbDefaultConn.model("List", ListSchema);
+
+// Export models from this db
+const UserModel = dbDefaultConn.model("User", UserSchema);
+const ListModel = dbDefaultConn.model("List", ListSchema);
+
 
 /*
  *
@@ -39,10 +41,10 @@ var ListModel = dbDefaultConn.model("List", ListSchema);
  */
 
 export {
-  //Connect functions
+  // Connect functions
   connectToDbDefault,
 
-  //Models
+  // Models
   UserModel,
   ListModel,
 };

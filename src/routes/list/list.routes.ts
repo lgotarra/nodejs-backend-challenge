@@ -9,7 +9,7 @@ interface Movie {
   title: string;
 }
 
-//Example Endpoint
+// Example Endpoint
 listsRouter.get("/", (req, res) => {
   return res.status(200).send("<p>List Routes Status: OK</p>");
 });

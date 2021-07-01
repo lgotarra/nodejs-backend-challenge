@@ -3,7 +3,7 @@ const usersRouter = Router();
 
 import { UserModel } from "../../connections/models";
 
-//Example Endpoint
+// Example Endpoint
 usersRouter.get("/", (req, res) => {
   return res.status(200).send("<p>User Routes Status: OK</p>");
 });
