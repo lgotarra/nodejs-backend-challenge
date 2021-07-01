@@ -29,5 +29,11 @@ const ListSchema: Schema = new Schema({
   ],
 });
 
+//Automatic increment of id
 ListSchema.plugin(AutoIncrementID, {});
-export default mongoose.model<IList>("User", ListSchema);
+
+//Export for a unique db connection
+//export default mongoose.model<IList>("List", ListSchema);
+
+// Export for multiple db connections. Need to add the model to desired db
+export default ListSchema;
