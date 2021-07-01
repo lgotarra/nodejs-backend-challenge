@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose, { connection } from "mongoose";
 
-type TInput = {
+export type TInput = {
   db: string;
 };
 
@@ -12,11 +12,9 @@ export default ({ db }: TInput) => {
         return console.info(`Successfully connected to ${db}`);
       })
       .catch((error) => {
-        console.error("Error connecting to database: ", error);
+        console.error(`Error connecting to database ${db}: `, error);
         return process.exit(1);
       });
   };
-  connect();
-
-  mongoose.connection.on("disconnected", connect);
+  return connection;
 };
