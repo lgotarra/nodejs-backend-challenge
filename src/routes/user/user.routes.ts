@@ -1,5 +1,8 @@
 import { Router } from "express";
+import { findSourceMap } from "module";
 const usersRouter = Router();
+
+import { UserModel } from "../../connections/models";
 
 //Example Endpoint
 usersRouter.get("/", (req, res) => {
@@ -14,17 +17,16 @@ usersRouter.get("/", (req, res) => {
  * ---------
  */
 
-/*
+
 usersRouter.get("/users", async (req, res) =>{
   try {
-    //Get data from db
+    const users = await UserModel.find();
+    res.send(users);
   } catch (e) {
     res.status(500).send(`Error: ${e.toString()}`);
   }
 })
-*/
 
-/*
 usersRouter.post("/newuser", async (req, res) =>{
   try {
     //Insert new user to db
@@ -32,6 +34,6 @@ usersRouter.post("/newuser", async (req, res) =>{
     res.status(500).send(`Error: ${e.toString()}`);
   }
 })
-*/
+
 
 export default usersRouter;
