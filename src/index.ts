@@ -3,7 +3,9 @@ import "./helpers/env";
 import express from "express";
 import http from "http";
 import cors from "cors";
-import routes from './routes';
+import routes from "./routes";
+// Connect to desired databases
+import { connectToDbDefault } from "./connections/models";
 
 const SERVER_PORT = process.env.SERVER_PORT;
 
@@ -34,6 +36,11 @@ app.get("/", async (req, res) => {
 
 // Routes
 app.use(routes);
+
+// ------------------------------------------------------------------------------------------------------------
+
+//Connect databases
+connectToDbDefault;
 
 // ------------------------------------------------------------------------------------------------------------
 

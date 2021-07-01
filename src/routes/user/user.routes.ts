@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { findSourceMap } from "module";
 const usersRouter = Router();
 
 import { UserModel } from "../../connections/models";
@@ -34,7 +33,6 @@ usersRouter.post("/newuser", async (req, res) => {
     });
     await user.save();
     res.status(200).send(true);
-    //Insert new user to db
   } catch (e) {
     res.status(500).send(`Error: ${e.toString()}`);
   }

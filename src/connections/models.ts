@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Model, Schema } from "mongoose";
 import connect, { TInput } from "./connect";
 //Import Schemas for each db
 import ListSchema from "../schemas/list.schema";
@@ -13,31 +13,24 @@ const dbDefault = process.env.DB_DEFAULT;
  *
  */
 
-//dbDefault Connection. Contains Users and Lists
-if (!dbDefault == null) {
-  var dbDefaultConn = connect({ db: dbDefault! });
+var dbDefaultConn = connect({ db: dbDefault! });
 
-  //Export models from this db
-  var UserModel = dbDefaultConn.model("User", UserSchema);
-  var ListModel = dbDefaultConn.model("List", ListSchema);
+function connectToDbDefault() {
+  //dbDefault Connection. Contains Users and Lists
 
-  //
   dbDefaultConn.on("disconnected", () => {
-    console.warn(
-      `Database ${dbDefaultConn} disconnected. Trying to reconnect`
-    );
+    console.warn(`Database ${dbDefaultConn} disconnected. Trying to reconnect`);
     connect;
   });
 
   dbDefaultConn.on("error", (error) => {
     console.error(`Error with database ${dbDefaultConn} connection: `, error);
   });
-
-} else {
-  console.error(
-    `Error connecting to database: database URL is undefined or null`
-  );
 }
+
+//Export models from this db
+var UserModel = dbDefaultConn.model("User", UserSchema);
+var ListModel = dbDefaultConn.model("List", ListSchema);
 
 /*
  *
@@ -45,4 +38,11 @@ if (!dbDefault == null) {
  *
  */
 
-export { UserModel, ListModel };
+export {
+  //Connect functions
+  connectToDbDefault,
+
+  //Models
+  UserModel,
+  ListModel,
+};
