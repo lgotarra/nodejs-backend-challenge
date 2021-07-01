@@ -17,23 +17,27 @@ usersRouter.get("/", (req, res) => {
  * ---------
  */
 
-
-usersRouter.get("/users", async (req, res) =>{
+usersRouter.get("/users", async (req, res) => {
   try {
     const users = await UserModel.find();
-    res.send(users);
+    res.status(200).send(users);
   } catch (e) {
     res.status(500).send(`Error: ${e.toString()}`);
   }
-})
+});
 
-usersRouter.post("/newuser", async (req, res) =>{
+usersRouter.post("/newuser", async (req, res) => {
   try {
+    const user = new UserModel({
+      name: req.body.name,
+      password: req.body.password,
+    });
+    await user.save();
+    res.status(200).send(true);
     //Insert new user to db
   } catch (e) {
     res.status(500).send(`Error: ${e.toString()}`);
   }
-})
-
+});
 
 export default usersRouter;
