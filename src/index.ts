@@ -40,5 +40,5 @@ app.use(routes);
 // Server launch
 http.createServer(app).listen(SERVER_PORT, () => {
   // tslint:disable-next-line:no-console
-  console.log(`Listening on ${SERVER_PORT}`);
+  console.info(`Listening on ${SERVER_PORT}`);
 });
